@@ -10,10 +10,9 @@
 		C506D38A2324F374000B4209 /* RealmManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C506D3882324F374000B4209 /* RealmManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5814D7A2449BBFF007E6F9D /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5814D782449BBFF007E6F9D /* Example.swift */; };
 		C5814D7B2449BBFF007E6F9D /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5814D792449BBFF007E6F9D /* UserDataManager.swift */; };
+		C5814D7D2449BD1D007E6F9D /* PersistableOnRealms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5814D7C2449BD1D007E6F9D /* PersistableOnRealms.swift */; };
 		C5FA32DF2324F8B300CFC13A /* RealmConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32DB2324F8B300CFC13A /* RealmConfigurationFactory.swift */; };
-		C5FA32E02324F8B300CFC13A /* PersistableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32DC2324F8B300CFC13A /* PersistableDelegate.swift */; };
 		C5FA32E12324F8B300CFC13A /* RealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32DD2324F8B300CFC13A /* RealmDataManager.swift */; };
-		C5FA32E22324F8B300CFC13A /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32DE2324F8B300CFC13A /* UserDataManager.swift */; };
 		C5FA32EA2325033E00CFC13A /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32E92325033E00CFC13A /* RealmPath.swift */; };
 		C5FA32EE232504D900CFC13A /* RealmPathInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32ED232504D900CFC13A /* RealmPathInstance.swift */; };
 		C5FA32F02325051A00CFC13A /* RealmDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FA32EF2325051A00CFC13A /* RealmDataManagerProtocol.swift */; };
@@ -25,10 +24,9 @@
 		C506D3892324F374000B4209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5814D782449BBFF007E6F9D /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C5814D792449BBFF007E6F9D /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		C5814D7C2449BD1D007E6F9D /* PersistableOnRealms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableOnRealms.swift; sourceTree = "<group>"; };
 		C5FA32DB2324F8B300CFC13A /* RealmConfigurationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfigurationFactory.swift; sourceTree = "<group>"; };
-		C5FA32DC2324F8B300CFC13A /* PersistableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistableDelegate.swift; sourceTree = "<group>"; };
 		C5FA32DD2324F8B300CFC13A /* RealmDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDataManager.swift; sourceTree = "<group>"; };
-		C5FA32DE2324F8B300CFC13A /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		C5FA32E92325033E00CFC13A /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
 		C5FA32ED232504D900CFC13A /* RealmPathInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPathInstance.swift; sourceTree = "<group>"; };
 		C5FA32EF2325051A00CFC13A /* RealmDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				C5FA32F32325056C00CFC13A /* Persistable */,
 				C5FA32F22325056000CFC13A /* RealmPath */,
 				C5FA32F12325053100CFC13A /* RealmDataManager */,
-				C5FA32DE2324F8B300CFC13A /* UserDataManager.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -122,7 +119,7 @@
 		C5FA32F32325056C00CFC13A /* Persistable */ = {
 			isa = PBXGroup;
 			children = (
-				C5FA32DC2324F8B300CFC13A /* PersistableDelegate.swift */,
+				C5814D7C2449BD1D007E6F9D /* PersistableOnRealms.swift */,
 			);
 			path = Persistable;
 			sourceTree = "<group>";
@@ -206,14 +203,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5FA32E22324F8B300CFC13A /* UserDataManager.swift in Sources */,
-				C5FA32E02324F8B300CFC13A /* PersistableDelegate.swift in Sources */,
 				C5814D7B2449BBFF007E6F9D /* UserDataManager.swift in Sources */,
 				C5FA32DF2324F8B300CFC13A /* RealmConfigurationFactory.swift in Sources */,
 				C5FA32F02325051A00CFC13A /* RealmDataManagerProtocol.swift in Sources */,
 				C5814D7A2449BBFF007E6F9D /* Example.swift in Sources */,
 				C5FA32E12324F8B300CFC13A /* RealmDataManager.swift in Sources */,
 				C5FA32EA2325033E00CFC13A /* RealmPath.swift in Sources */,
+				C5814D7D2449BD1D007E6F9D /* PersistableOnRealms.swift in Sources */,
 				C5FA32EE232504D900CFC13A /* RealmPathInstance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
