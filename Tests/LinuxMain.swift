@@ -1,7 +1,7 @@
 import XCTest
 
-import RealmManagerTests
+import EzRealmTests
 
 var tests = [XCTestCaseEntry]()
-tests += RealmManagerTests.allTests()
+tests += EzRealmTests.allTests()
 XCTMain(tests)

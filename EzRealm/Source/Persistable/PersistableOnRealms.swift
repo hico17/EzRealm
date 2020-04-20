@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-protocol PersistableOnRealms where Self: Object {
+public protocol PersistableOnRealms where Self: Object {
     /// The persisted instances of the object in the specified Realm.
     /// - Parameter realm: The Realm where to take the objects.
     static func persisted(in realm: RealmPath, withOptions options: [RealmConfigurationFactory.Options]) -> [Self]
@@ -26,7 +26,7 @@ protocol PersistableOnRealms where Self: Object {
     func update(from realm: RealmPath, withOptions options: [RealmConfigurationFactory.Options], _ changes: ((Self) throws -> Void)) throws -> Void
 }
 
-extension PersistableOnRealms {
+public extension PersistableOnRealms {
     static func persisted(in realm: RealmPath, withOptions options: [RealmConfigurationFactory.Options]) -> [Self] {
         guard let results = try? RealmDataManager(for: realm, options: options).read(self) else { return [] }
         return Array(results)
@@ -73,7 +73,7 @@ extension PersistableOnRealms {
 }
 
 /// Adapt to this protocol to use the standard
-protocol PersistableOnRealm: PersistableOnRealms {
+public protocol PersistableOnRealm: PersistableOnRealms {
     /// The persisted instances of the object in the specified Realm.
     static func persisted() -> [Self]
     /// Specify in which Realm belongs the object.
@@ -91,7 +91,7 @@ protocol PersistableOnRealm: PersistableOnRealms {
     func update(_ changes: ((Self) throws -> Void)) throws
 }
 
-extension PersistableOnRealm {
+public extension PersistableOnRealm {
     static func persisted() -> [Self] {
         return persisted(in: Self.realmPath, withOptions: Self.options)
     }

@@ -1,6 +1,6 @@
-# RealmManager
+# EzRealm
 
-RealmManager is an easy way of managing Realms objects.
+EzRealm is an easy way of managing Realms objects.
 
 ## Features
 
@@ -20,7 +20,7 @@ class User: Object {
 }
 ```
 
-If you want to use the RealmManager methods, you just have to make it inherit from PersistableOnRealm. 
+If you want to use the EzRealm methods, you just have to make it inherit from PersistableOnRealm. 
 The protocol just needs the path where you want to save the Realm file.
 
 ```swift
@@ -68,7 +68,7 @@ try user.update() {
 
 ### CocoaPods
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate RealmManager into your Xcode project using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate EzRealm into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 (TODO, to be integrated yet)
 ```ruby
@@ -77,7 +77,7 @@ TODO
 
 ### Manually
 
-If you prefer not to use any of the aforementioned dependency managers, you can integrate RealmManager into your project manually.
+If you prefer not to use any of the aforementioned dependency managers, you can integrate EzRealm into your project manually.
 
 ## Communication
 - If you **need help** using Realm, contact Realm [or check their documentation](https://realm.io/docs/swift/latest/).
@@ -94,12 +94,12 @@ We all know that Realm is synonymous with simple and fast, but while working on 
 ## Credits
 
 I DON'T own ANYTHING about Realm. This is just a manager which wrap Realm classes. For any informations about Realm, [contact them or look at their website](https://realm.io).
-RealmManager is owned and maintained by Luca Celiento. You can follow me on Twitter at [@lookatlooka](https://twitter.com/lookatlooka) for project updates, advices and releases.
+EzRealm is owned and maintained by Luca Celiento. You can follow me on Twitter at [@lookatlooka](https://twitter.com/lookatlooka) for project updates, advices and releases.
 
 ### Security Disclosure
 
-If you believe you have identified a security vulnerability with RealmManager, please report it as soon as possible.
+If you believe you have identified a security vulnerability with EzRealm, please report it as soon as possible.
 
 ## License
 
-RealmManager is released under the MIT license.
+EzRealm is released under the MIT license.
