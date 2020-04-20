@@ -3,59 +3,52 @@
 //  Easy Guide
 //
 //  Created by Luca Celiento on 24/07/18.
-//  Copyright © 2018 System Management. All rights reserved.
+//  Copyright © 2018 Luca Celiento. All rights reserved.
 //
 
 import Foundation
 import RealmSwift
 
 /// Class that helps you to create a new RealmConfiguration.
-class RealmConfigurationFactory {
+struct RealmConfigurationFactory {
     
     // MARK: Public implementation
     
-    func create(availableForBackground: Bool = true, encrypted: Bool = true) throws -> Realm.Configuration {
-        
-        do {
-            
-            guard let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else {
-                throw Error.openingFailed
-            }
-            
-            let url = documentDirectory.appendingPathComponent(realmPath)
-            
-            let encryptionKey: Data? = encrypted ? getKeyFromKeychain() as Data : nil
-            let realmConfiguration = Realm.Configuration(fileURL: url, encryptionKey: encryptionKey, readOnly: false)
-            
-            if availableForBackground {
-                
-                guard let realmFileURL = realmConfiguration.fileURL else {
-                    throw Error.openingFileURLFailed
-                }
-                
-                let realmFolderPath = realmFileURL.deletingLastPathComponent().path
-                
-                do {
-                    // Removing the file protection for the realm url path.
-                    try FileManager.default.setAttributes([FileAttributeKey.protectionKey : FileProtectionType.none], ofItemAtPath: realmFolderPath)
-                } catch {
-                    throw Error.removingFileProtectionFailed
-                }
-            }
-            
-            return realmConfiguration
-        } catch {
+    enum Options {
+        case availableForBackground
+        case encrypted
+    }
+    
+    func create() throws -> Realm.Configuration {
+        guard let documentDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else {
             throw Error.openingFailed
         }
+        let url = documentDirectory.appendingPathComponent(realmPath.pathComponentWithExtension)
+        let encryptionKey: Data? = options.contains(.encrypted) ? getKeyFromKeychain() as Data : nil
+        let realmConfiguration = Realm.Configuration(fileURL: url, encryptionKey: encryptionKey, readOnly: false)
+        if options.contains(.availableForBackground) {
+            guard let realmFileURL = realmConfiguration.fileURL else {
+                throw Error.openingFileURLFailed
+            }
+            let realmFolderPath = realmFileURL.deletingLastPathComponent().path
+            do {
+                // Removing the file protection for the realm url path.
+                try FileManager.default.setAttributes([FileAttributeKey.protectionKey : FileProtectionType.none], ofItemAtPath: realmFolderPath)
+            } catch {
+                throw Error.removingFileProtectionFailed
+            }
+        }
+        return realmConfiguration
     }
     
     // MARK: Private implementation
     
-    private let realmPath: String
+    let realmPath: RealmPath
+    let options: [Options]
     
     private func getKeyFromKeychain() -> NSData {
         // Identifier for our keychain entry - should be unique for your application
-        let keychainIdentifier = "io.Realm.EncryptionKey"
+        let keychainIdentifier = [NSObject.self, NSString.self].description
         let keychainIdentifierData = keychainIdentifier.data(using: String.Encoding.utf8, allowLossyConversion: false)!
         
         // First check in the keychain for an existing key
@@ -91,13 +84,6 @@ class RealmConfigurationFactory {
         assert(status == errSecSuccess, "Failed to insert the new key in the keychain")
         
         return keyData
-    }
-    
-    // MARK: Init
-    
-    /// Init the class with the chosen Realm type.
-    init(withPath realmPath: RealmPath) {
-        self.realmPath = realmPath.pathComponentWithExtension
     }
 }
 

@@ -3,7 +3,7 @@
 //  Easy Guide
 //
 //  Created by Luca Celiento on 24/07/18.
-//  Copyright © 2018 System Management. All rights reserved.
+//  Copyright © 2018 Luca Celiento. All rights reserved.
 //
 
 import RealmSwift
@@ -96,14 +96,11 @@ class RealmDataManager: RealmDataManagerProtocol {
 
     // MARK: Init
     
-    required init(for realmPath: RealmPath) {
-        self.realmPath = realmPath
-        self.realmConfiguration = try? RealmConfigurationFactory(withPath: realmPath).create(availableForBackground: false, encrypted: false)
+    required init(for realmPath: RealmPath, options: [RealmConfigurationFactory.Options]) {
+        self.realmConfiguration = try? RealmConfigurationFactory(realmPath: realmPath, options: options).create()
     }
     
     // MARK: Private implementation
-    
-    private let realmPath: RealmPath
     private let realmConfiguration: Realm.Configuration?
 }
 

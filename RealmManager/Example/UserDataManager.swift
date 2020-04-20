@@ -3,25 +3,10 @@
 //  Easy Guide
 //
 //  Created by Luca Celiento on 07/11/2018.
-//  Copyright © 2018 System Management. All rights reserved.
+//  Copyright © 2018 Luca Celiento. All rights reserved.
 //
 
 import RealmSwift
-
-private enum Realms: String, RealmPath {
-    case users
-    
-    var pathComponent: String {
-        return self.rawValue
-    }
-}
-
-private class User: Object, PersistableOnRealm {
-    
-    static var realmPath: RealmPath {
-        return Realms.users
-    }
-}
 
 private class UserDataManager: RealmDataManagerProtocol {
     
@@ -53,7 +38,7 @@ private class UserDataManager: RealmDataManagerProtocol {
         return try UserDataManager.dataManager.read(objectType)
     }
     
-    private static var dataManager = RealmDataManager(for: Realms.users)
+    private static var dataManager = RealmDataManager(for: Realms.users, options: [.availableForBackground, .encrypted])
     
     private init() {}
 }
