@@ -13,10 +13,10 @@ Pod::Spec.new do |spec|
   spec.homepage         = 'https://github.com/hico17/EzRealm'
   spec.license          = { :type => 'MIT', :file => 'LICENSE' }
   spec.author           = { 'Hico' => 'lucaceldev@gmail.com' }
-  spec.source           = { :git => 'https://github.com/hico17/EzRealm', :tag => spec.version.to_s }
+  spec.source           = { :git => 'https://github.com/hico17/EzRealm.git', :tag => spec.version.to_s }
  
   spec.ios.deployment_target = '10.0'
   spec.source_files = 'EzRealm/Source/**/*.swift'
-  spec.resources = "Resources/**/*.{storyboard,xib,xcassets}"
+  # spec.resources = "EzRealm/Source/**/*.{storyboard,xib,xcassets}"
   spec.dependency 'RealmSwift'
 end
