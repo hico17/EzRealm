@@ -72,7 +72,7 @@ try user.update() {
 
 (TODO, to be integrated yet)
 ```ruby
-TODO 
+pod 'EzRealm' 
 ```
 
 ### Manually
