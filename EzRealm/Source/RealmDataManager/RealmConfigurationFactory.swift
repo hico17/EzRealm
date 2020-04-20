@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 
 /// Class that helps you to create a new RealmConfiguration.
-struct RealmConfigurationFactory {
+public struct RealmConfigurationFactory {
     
     // MARK: Public implementation
     
-    enum Options {
+    public enum Options {
         case availableForBackground
         case encrypted
     }
